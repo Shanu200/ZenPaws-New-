@@ -52,40 +52,46 @@ const Footer = () => {
             {/* Quick Links */}
             <h4 className="text-2xl font-bold text-center mb-4">Quick Links</h4>
             <div className="flex justify-center space-x-10 mb-7">
-              {["About", "Categories", "Login", "Contact", "Cart"].map((link) => (
-                <motion.a
-                  key={link}
-                  href={`/${link.toLowerCase()}`}
-                  className="text-2xl font-medium hover:text-[#eb9329f4] transition"
-                  variants={fadeInUp}
-                >
-                  {link}
-                </motion.a>
-              ))}
+              {["aboutus", "categories", "login", "contact", "Cart"].map(
+                (link) => (
+                  <motion.a
+                    key={link}
+                    href={`/${link.toLowerCase()}`}
+                    className="text-2xl font-medium hover:text-[#eb9329f4] transition"
+                    variants={fadeInUp}
+                  >
+                    {link}
+                  </motion.a>
+                )
+              )}
             </div>
 
             {/* Social Media Links */}
-            
+
             <div className="flex justify-center space-x-6">
-  {[
-    { icon: <FaFacebook size={35} />, href: "#", color: "#2735b8" },
-    { icon: <FaLinkedin size={35} />, href: "#", color: "#2735b8" },
-    { icon: <FaInstagram size={35} />, href: "#", color: "#dd1f87" },
-    { icon: <FaYoutube size={35} />, href: "#", color: "#ea2e19" },
-  ].map((social, index) => (
-    <motion.a
-      key={index}
-      href={social.href}
-      target="_blank"
-      rel="noopener noreferrer"
-      style={{ color: social.color }} 
-      className="transition"
-      variants={fadeInUp}
-    >
-      {social.icon}
-    </motion.a>
-  ))}
-</div>
+              {[
+                { icon: <FaFacebook size={35} />, href: "#", color: "#2735b8" },
+                { icon: <FaLinkedin size={35} />, href: "#", color: "#2735b8" },
+                {
+                  icon: <FaInstagram size={35} />,
+                  href: "#",
+                  color: "#dd1f87",
+                },
+                { icon: <FaYoutube size={35} />, href: "#", color: "#ea2e19" },
+              ].map((social, index) => (
+                <motion.a
+                  key={index}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ color: social.color }}
+                  className="transition"
+                  variants={fadeInUp}
+                >
+                  {social.icon}
+                </motion.a>
+              ))}
+            </div>
           </div>
 
           {/* Right Side - Contact Information */}
