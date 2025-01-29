@@ -2,6 +2,7 @@ import React from "react";
 import BannerPng from "../../assets/Home Assest/21-22-55-867_512.png";
 import { motion } from "framer-motion";
 import { FadeRight, FadeUp } from "../../utility/HomeUtility/animation";
+import { Link } from "react-router-dom";
 
 const Banner3 = () => {
   return (
@@ -55,7 +56,11 @@ const Banner3 = () => {
               animate="visible"
               className="flex justify-center md:justify-start"
             >
-              <button className="primary-btn bg-orange-700 text-white px-6 py-3 rounded-2xl hover:bg-orange-800 transition">Learn More</button>
+              <Link to="/aboutus">
+                <button className="primary-btn bg-orange-700 text-white px-6 py-3 rounded-2xl hover:bg-orange-800 transition">
+                  Learn More
+                </button>
+              </Link>
             </motion.div>
           </div>
         </div>

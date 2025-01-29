@@ -2,6 +2,7 @@ import React from "react";
 import Herogif from "../../assets/Home Assest/Untitled design.gif";
 import {motion} from "framer-motion";
 import { FadeRight } from "../../utility/HomeUtility/animation";
+import { Link } from "react-router-dom";
 
 const Hero = () => {
   return (
@@ -19,7 +20,9 @@ const Hero = () => {
               <br />
               with
               <br />
-              <span className="text-orange-600 ">Our Pet Therapy Services!</span>
+              <span className="text-orange-600 ">
+                Our Pet Therapy Services!
+              </span>
             </motion.h1>
 
             <motion.p
@@ -28,7 +31,10 @@ const Hero = () => {
               animate="visible"
               className="text-gray-600 ml-14 font-medium leading-relaxed justify-center"
             >
-              "Welcome to our pet therapy services! Relax and feel calm with our friendly cats, happy dogs, and peaceful fish. Spend time with our pets and enjoy a break from stress. Let them help you feel happy and refreshed."
+              "Welcome to our pet therapy services! Relax and feel calm with our
+              friendly cats, happy dogs, and peaceful fish. Spend time with our
+              pets and enjoy a break from stress. Let them help you feel happy
+              and refreshed."
             </motion.p>
 
             <motion.p
@@ -46,9 +52,11 @@ const Hero = () => {
               animate="visible"
               className="flex justify-center md:justify-start"
             >
-              <button className="ml-50 primary-btn bg-orange-700 text-white px-6 py-3 rounded-2xl hover:bg-orange-800 transition ">
-                Book Now
-              </button>
+              <Link to="/categories">
+                <button className="ml-50 primary-btn bg-orange-700 text-white px-6 py-3 rounded-2xl hover:bg-orange-800 transition ">
+                  Book Now
+                </button>
+              </Link>
             </motion.div>
           </div>
         </div>
