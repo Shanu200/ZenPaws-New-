@@ -52,11 +52,11 @@ const AboutUs = () => {
               <p className='absolute  top-[1570px]   left-[500px]  text-[20px] w-[1000px]'><b>Are you depressed or dissatisfied with anything?</b></p>
               <p className='absolute  top-[1960px]  left-[440px]  text-[20px] w-[1000px]'><b>Spend time with ZenPaws animals and you will feel the difference.</b></p>
               
-              <div className='bg-orange-400 w-[120px] absolute top-[2030px] left-[680px] transition-transform duration-300 ease-in-out hover:scale-110 hover:shadow-lg
-              text-white px-2 py-2 text-[20px]'>
-                  <button>
+              <div className='bg-orange-700 w-[120px] rounded-xl absolute top-[2030px] left-[680px] transition-transform duration-300 ease-in-out hover:scale-110 hover:bg-orange-800
+              text-white px-2 py-2 text-[20px] '>
+                  <button4>
                       Contact-Us
-                  </button>
+                  </button4>
               </div>
 
             </div>

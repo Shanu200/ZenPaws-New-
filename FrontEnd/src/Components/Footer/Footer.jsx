@@ -13,70 +13,58 @@ const staggerContainer = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    transition: {
-      delayChildren: 0.3,
-      staggerChildren: 0.2,
-    },
+    transition: { delayChildren: 0.3, staggerChildren: 0.2 },
   },
 };
 
 const Footer = () => {
   return (
     <motion.footer
-      className="bg-[#e3dcd6] text-[#0c0c0c] pt-3 pb-3"
+      className="bg-[#e3dcd6] text-[#0c0c0c] pt-8 pb-6"
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true }}
       variants={staggerContainer}
     >
-      <div className="container mx-auto px-32">
-        {/* Footer Section */}
-        <motion.div
-          className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center mb-8"
-          variants={fadeInUp}
-        >
-          {/* Left Side - Logo */}
-          <div className="flex justify-center items-center space-x-4 mb-4 md:mb-0 mr-60">
-            <img src={logo} alt="Logo" className="h-250 w-auto" />
+      <div className="container mx-auto px-10 md:px-32">
+        
+        {/* Footer Main Section */}
+        <motion.div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center mb-8" variants={fadeInUp}>
+          
+          {/* Left Section: Logo */}
+          <div className="flex justify-center md:justify-start items-center space-x-4">
+            <img src={logo} alt="Logo" className="h-60 w-auto " />
           </div>
 
-          {/* Center Section - Paragraph, Quick Links, and Social Media */}
-          <div className="text-center mr-5">
-            <h3 className="text-2xl font-bold mb-2">Why Zen Paws?</h3>
+          {/* Center Section: Information & Links */}
+          <div className="text-center">
+            <h3 className="text-2xl font-bold mb-3">Why Zen Paws?</h3>
             <p className="text-lg max-w-3xl mx-auto mb-6">
               Experience the joy of personalized pet therapy sessions with our
-              highly trained and loving therapy pets. Zen Paws is dedicated to
-              creating moments of peace and happiness for everyone.
+              highly trained and loving therapy pets. Zen Paws is dedicated to creating
+              moments of peace and happiness for everyone.
             </p>
 
-            {/* Quick Links */}
-            <h4 className="text-2xl font-bold text-center mb-4">Quick Links</h4>
-            <div className="flex justify-center space-x-10 mb-7">
-              {["aboutus", "categories", "login", "contact", "Cart"].map(
-                (link) => (
-                  <motion.a
-                    key={link}
-                    href={`/${link.toLowerCase()}`}
-                    className="text-2xl font-medium hover:text-[#eb9329f4] transition"
-                    variants={fadeInUp}
-                  >
-                    {link}
-                  </motion.a>
-                )
-              )}
+            <h4 className="text-2xl font-bold mb-4">Quick Links</h4>
+            <div className="flex justify-center space-x-8 mb-6">
+              {["About", "Categories", "Login", "Contact", "Cart"].map((link) => (
+                <motion.a
+                  key={link}
+                  href={`/${link.toLowerCase()}`}
+                  className="text-xl font-medium hover:text-[#eb9329f4] transition"
+                  variants={fadeInUp}
+                >
+                  {link}
+                </motion.a>
+              ))}
             </div>
 
             {/* Social Media Links */}
-
             <div className="flex justify-center space-x-6">
               {[
                 { icon: <FaFacebook size={35} />, href: "#", color: "#2735b8" },
                 { icon: <FaLinkedin size={35} />, href: "#", color: "#2735b8" },
-                {
-                  icon: <FaInstagram size={35} />,
-                  href: "#",
-                  color: "#dd1f87",
-                },
+                { icon: <FaInstagram size={35} />, href: "#", color: "#dd1f87" },
                 { icon: <FaYoutube size={35} />, href: "#", color: "#ea2e19" },
               ].map((social, index) => (
                 <motion.a
@@ -94,34 +82,31 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Right Side - Contact Information */}
-          <div className=" ml-36 mb-24">
-            <h4 className="font-bold text-2xl mb-2">Contact Us</h4>
-            <p className="text-xl">
+          {/* Right Section: Contact Information */}
+          <div className="text-left ">
+            <h4 className="font-bold text-2xl mb-10 ml-45">Contact Us</h4>
+            <p className="text-xl mb-1 ml-38">
               Email:{" "}
               <a
-                href="mailto:office@therapydogs.com"
+                href="mailto:zenpaws@therapydogs.com"
                 className="underline hover:text-[#290f93] transition"
               >
                 zenpaws@therapydogs.com
               </a>
             </p>
-            <p className="text-xl">Phone: 307-432-0272</p>
-            <p className="text-xl">Phone: 877-843-7364</p>
-            <p className="text-xl underline hover:text-[#290f93] transition">
-              Private Policy
+            <p className="text-xl mb-2 ml-38 ">Phone: 071-432-0272</p>
+            <p className="text-xl mb-1 ml-38">Phone: 077-843-7364</p>
+            <p className="text-xl underline hover:text-[#290f93] transition ml-38">
+              Privacy Policy
             </p>
-            <p className="text-xl underline hover:text-[#290f93] transition">
+            <p className="text-xl underline hover:text-[#290f93] transition ml-38">
               Terms & Conditions
             </p>
           </div>
         </motion.div>
 
         {/* Bottom Section */}
-        <motion.div
-          className="mt-8 text-center text-xs text-[#0b0b0a] border-t border-[#121211] pt-4"
-          variants={fadeInUp}
-        >
+        <motion.div className="text-center text-xs text-[#0b0b0a] border-t border-[#121211] pt-4" variants={fadeInUp}>
           <p className="text-lg">
             Copyright @ 2024 ZenPaws Therapy Dogs, All Rights Reserved
           </p>

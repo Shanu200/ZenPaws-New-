@@ -39,7 +39,7 @@ const Navbar = () => {
         className="container flex justify-between items-center py-4 md:py-4"
       >
         {/* Logo and Title */}
-        <div className="text-4xl flex items-center font-bold uppercase">
+        <div className="text-4xl ml-5 flex items-center font-bold uppercase">
           <p className="text-orange-600 font-bold text-lg">Pet</p>
           <p className="text-orange-600 font-bold text-lg mx-1">Therapy</p>
           <p className="text-orange-600 font-bold text-lg">Shop</p>
@@ -59,9 +59,9 @@ const Navbar = () => {
                 </a>
               </li>
             ))}
-            <button className="text-2xl hover:bg-orange-600 hover:text-white rounded-full p-2 duration-200">
+            <button2 className="text-2xl hover:bg-orange-600 hover:text-white rounded-full p-2 duration-200">
               <MdOutlineShoppingCart />
-            </button>
+            </button2>
           </ul>
         </div>
 
@@ -75,11 +75,11 @@ const Navbar = () => {
 
         {/* Search Input */}
         <div className="flex items-center gap-x-5">
-          <div className="relative md:w-64">
+          <div className="relative md:w-64 mr-6">
             <span className="absolute inset-y-0 left-2 flex items-center">
-              <button className="p-1 focus:outline-none text-gray-500">
+              <button1 className="p-1 focus:outline-none text-gray-500">
                 <FaSearch />
-              </button>
+              </button1>
             </span>
             <input
               type="text"
@@ -90,12 +90,12 @@ const Navbar = () => {
 
           {/* Profile Menu */}
           <div className="relative profile-menu">
-            <button
-              className="text-black flex items-center focus:outline-none group"
+            <button3
+              className="mr-5 text-black flex items-center focus:outline-none group"
               onClick={() => setDropdownOpen(!isDropdownOpen)}
             >
               <FaUserCircle className="w-8 h-8 text-gray-500" />
-            </button>
+            </button3>
             {isDropdownOpen && (
               <div className="z-10 absolute bg-white rounded-lg shadow-lg w-40 mt-2 top-full right-0 border border-gray-200">
                 <ul className="py-2 text-sm text-gray-950">

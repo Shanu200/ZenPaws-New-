@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import BgImage from "../../assets/Home Assest/Untitled design.png";
+import BgImage from "../../assets/Home Assest/Untitled design1.png";
 
 const bgStyle = {
   backgroundImage: `url(${BgImage})`,
@@ -12,18 +12,15 @@ const bgStyle = {
 const Banner = () => {
   return (
     <section className="bg-[#f7f7f7]">
-      <motion.div
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        style={bgStyle}
-        className="container  w-full py-28 md:py-85 "
-      >
-        <motion.div
-          initial={{ opacity: 0, scale: 0.5 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.6, ease: "easeInOut" }}
-          className="flex flex-col justify-center"
-        >
+      <motion.div 
+      initial = {{opacity:0}}
+      whileInView={{opacity:1 }}
+      style={bgStyle} className="container w-full py-20 md:py-85">
+        <motion.div 
+        initial={{ opacity: 0, scale:0.5}}
+        whileInView={{opacity:1, scale:1}}
+        transition={{duration: 0.6, ease: "easeInOut"}}
+        className="flex flex-col justify-center">
           <div className="text-center space-y-4 lg:max-w-[430px] mx-auto">
             <h1 className="text-4xl font-bold text-red-700 !leading-snug">
               Subscribe to Our Newsletter
