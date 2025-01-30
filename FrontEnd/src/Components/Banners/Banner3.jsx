@@ -57,7 +57,7 @@ const Banner3 = () => {
               className="flex justify-center md:justify-start"
             >
               <Link to="/aboutus">
-                <button className="primary-btn bg-orange-700 text-white px-6 py-3 rounded-2xl hover:bg-orange-800 transition">
+                <button className="primary-btn bg-orange-700 text-white px-6 py-3 rounded-2xl hover:bg-orange-800 transition cursor-pointer">
                   Learn More
                 </button>
               </Link>
