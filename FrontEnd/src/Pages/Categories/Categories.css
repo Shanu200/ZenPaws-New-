@@ -4,17 +4,10 @@
   height: 100vh;
   overflow: hidden;
 }
-.search-bar {
-  padding: 8px;
-  width: 300px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-}
 
-.icons span {
-  margin-left: 15px;
-  font-size: 18px;
-}
+
+
+
 
 .content {
   display: flex;
@@ -23,7 +16,7 @@
 }
 
 .sidebar {
-  width: 200px;
+  width: 250px;
   background-color: #dd6b20;
   padding: 20px;
   height: 100%; 
@@ -49,7 +42,7 @@
 .sidebar ul {
   list-style: none;
   padding: 0;
-  font-size: 17px;
+  font-size: 25px;
   font-family: 'Trebuchet MS', sans-serif;
   position: relative; top: 50px;
 }
