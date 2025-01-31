@@ -14,7 +14,7 @@ const Hero = () => {
               variants={FadeRight(0.6)}
               initial="hidden"
               animate="visible"
-              className="ml-24 text-4xl lg:text-5xl font-semi bold xl:leading-loose font-poppins text-gray-900 md:text-left"
+              className="ml-24 text-4xl lg:text-5xl font-semi bold xl:leading-loose font-poppins text-gray-900 md:text-left mt-8"
             >
               Relax and Heal
               <br />
