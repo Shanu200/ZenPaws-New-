@@ -8,8 +8,8 @@ const Banner = () => {
     <motion.div 
       initial={{ opacity: 0, y: 20 }} 
       animate={{ opacity: 1, y: 0 }} 
-      transition={{ duration: 1}}
-      className="bg-gray-50 p-10 rounded-lg shadow-md flex flex-col md:flex-row justify-between items-center w-full max-w-5xl mx-auto"
+      transition={{ duration: 0.8}}
+      className="bg-gray-50 p-10 rounded-lg shadow-md flex flex-col md:flex-row justify-between items-center w-full max-w-5xl mx-auto mt-6"
     >
       <div className="text-center md:text-left mb-6 md:mb-0">
         <h2 className="text-gray-800 text-2xl md:text-3xl font-semibold mr-10">
@@ -23,14 +23,14 @@ const Banner = () => {
           <FaPaw className="text-orange-700 text-2xl" />
           <div>
             <p className="text-orange-700 text-xl font-bold">2,245,341</p>
-            <p className="text-gray-500">Happy Pets</p>
+            <p className="text-gray-500">Customers</p>
           </div>
         </motion.div>
         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.6 }} className="flex items-center justify-center md:justify-start gap-3">
           <FaCalendarCheck className="text-orange-700 text-2xl" />
           <div>
             <p className="text-orange-700 text-xl font-bold">828,867</p>
-            <p className="text-gray-500">Therapy Sessions</p>
+            <p className="text-gray-500">Bookings</p>
           </div>
         </motion.div>
         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.8 }} className="flex items-center justify-center md:justify-start gap-3">
