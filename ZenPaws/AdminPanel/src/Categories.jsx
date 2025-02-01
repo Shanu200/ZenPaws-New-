@@ -2,23 +2,28 @@ import { useState } from 'react';
 import { BsFillArchiveFill, BsPeopleFill, BsGrid1X2Fill, BsFillBellFill, BsPencilSquare, BsTrash, BsFillEyeFill } from 'react-icons/bs';
 import { Link } from 'react-router-dom';
 import DataTable from 'react-data-table-component';
+import category_dog from './assets/category_dog.jpg';
+import category_cat from './assets/category_cat.jpg';
+import category_rabbit from './assets/category_rabbit.jpg';
+import category_fish from './assets/category_fish.jpg';
+import category_hamster from './assets/category_hamster.jpg';
 
 function Categories() {
     console.log('Categories component rendered');
 
     const customStyles = {
-        table: { style: { backgroundColor: "#a85f6e", color: "#ffffff" } },
+        table: { style: { backgroundColor: "#a85f6e", color: "#ffff" } },
         headRow: { style: { backgroundColor: "#49282f", color: "#ffffff", fontSize: "17px" } }
     };
 
     const [expandedRows, setExpandedRows] = useState({});
     const [editMode, setEditMode] = useState(null);
     const [records, setRecords] = useState([
-        { id: 1, category: 'Dogs', total: '30', description: 'The dog is a domesticated descendant of the gray wolf. Also called the domestic dog, it was selectively bred from an extinct population of wolves during the Late Pleistocene by hunter-gatherers. The dog was the first species to be domesticated by humans, over 14,000 years ago and before the development of agriculture.' },
-        { id: 2, category: 'Cats', total: '40', description: 'The cat, also referred to as the domestic cat, is a small domesticated carnivorous mammal. It is the only domesticated species of the family Felidae. Advances in archaeology and genetics have shown that the domestication of the cat occurred in the Near East around 7500 BC.' },
-        { id: 3, category: 'Rabbits', total: '12', description: 'Rabbits are small mammals in the family Leporidae, which is in the order Lagomorpha. They are familiar throughout the world as a small herbivore, a prey animal, a domesticated form of livestock, and a pet, having a widespread effect on ecologies and cultures.' },
-        { id: 4, category: 'Hamsters', total: '10', description: 'Hamsters are rodents belonging to the subfamily Cricetinae, which contains 19 species classified in seven genera. They have become established as popular small pets. The best-known species of hamster is the golden or Syrian hamster, which is the type most commonly kept as a pet.' },
-        { id: 5, category: 'Fish', total: '45', description: 'A fish is an aquatic, anamniotic, gill-bearing vertebrate animal with swimming fins and a hard skull, but lacking limbs with digits.' }
+        { id: 1, category: 'Dogs', total: '30', image:category_dog, description: 'The dog is a domesticated descendant of the gray wolf. Also called the domestic dog, it was selectively bred from an extinct population of wolves during the Late Pleistocene by hunter-gatherers. The dog was the first species to be domesticated by humans, over 14,000 years ago and before the development of agriculture.' },
+        { id: 2, category: 'Cats', total: '40', image:category_cat, description: 'The cat, also referred to as the domestic cat, is a small domesticated carnivorous mammal. It is the only domesticated species of the family Felidae. Advances in archaeology and genetics have shown that the domestication of the cat occurred in the Near East around 7500 BC.' },
+        { id: 3, category: 'Rabbits', total: '12', image:category_rabbit, description: 'Rabbits are small mammals in the family Leporidae, which is in the order Lagomorpha. They are familiar throughout the world as a small herbivore, a prey animal, a domesticated form of livestock, and a pet, having a widespread effect on ecologies and cultures.' },
+        { id: 4, category: 'Hamsters', total: '10', image:category_hamster, description: 'Hamsters are rodents belonging to the subfamily Cricetinae, which contains 19 species classified in seven genera. They have become established as popular small pets. The best-known species of hamster is the golden or Syrian hamster, which is the type most commonly kept as a pet.' },
+        { id: 5, category: 'Fish', total: '45', image:category_fish, description: 'A fish is an aquatic, anamniotic, gill-bearing vertebrate animal with swimming fins and a hard skull, but lacking limbs with digits.' }
     ]);
 
     const toggleExpand = (id) => {
@@ -38,6 +43,17 @@ function Categories() {
     };
 
     const columns = [
+        { 
+            name: 'Image', 
+            selector: row => row.image, 
+            cell: row => (
+                <img 
+                    src={row.image} 
+                    alt={row.category} 
+                    style={{ width: '50px', height: '50px', borderRadius: '5px' }} 
+                />
+            ) 
+        },
         {
             name: 'Category',
             selector: row => row.category,
@@ -64,7 +80,15 @@ function Categories() {
                     <button
                         className="btn btn-link p-0"
                         onClick={() => toggleExpand(row.id)}
-                        style={{ color: '#fff', textDecoration: 'underline', marginLeft: '5px' }}
+                        style={{
+                            color: '#7C444F',
+                            textDecoration: 'none',
+                            marginLeft: '5px',
+                            border: 'none', 
+                            background: 'none', 
+                            padding: '0', 
+                            cursor: 'pointer' 
+                        }}
                     >
                         {expandedRows[row.id] ? 'Read Less' : 'Read More'}
                     </button>
