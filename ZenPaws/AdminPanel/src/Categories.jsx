@@ -12,12 +12,32 @@ function Categories() {
     console.log('Categories component rendered');
 
     const customStyles = {
-        table: { style: { backgroundColor: "#a85f6e", color: "#ffff" } },
-        headRow: { style: { backgroundColor: "#49282f", color: "#ffffff", fontSize: "17px" } }
+        table: { 
+            style: { backgroundColor: "#a85f6e", color: "#ffff" } 
+        },
+        headRow: { 
+            style: { 
+                backgroundColor: "#49282f", 
+                color: "#ffffff", 
+                fontSize: "17px", 
+                textAlign: "center"
+            } 
+        },
+        rows: {
+            style: { textAlign: "center" }
+        },
+        cells: {
+            style: { textAlign: "center" } 
+        },
+        headCells: {
+            style: { 
+                textAlign: "center", 
+                justifyContent: "center"
+            }
+        }
     };
-
+    
     const [expandedRows, setExpandedRows] = useState({});
-    const [editMode, setEditMode] = useState(null);
     const [records, setRecords] = useState([
         { id: 1, category: 'Dogs', total: '30', image:category_dog, description: 'The dog is a domesticated descendant of the gray wolf. Also called the domestic dog, it was selectively bred from an extinct population of wolves during the Late Pleistocene by hunter-gatherers. The dog was the first species to be domesticated by humans, over 14,000 years ago and before the development of agriculture.' },
         { id: 2, category: 'Cats', total: '40', image:category_cat, description: 'The cat, also referred to as the domestic cat, is a small domesticated carnivorous mammal. It is the only domesticated species of the family Felidae. Advances in archaeology and genetics have shown that the domestication of the cat occurred in the Near East around 7500 BC.' },
@@ -28,10 +48,6 @@ function Categories() {
 
     const toggleExpand = (id) => {
         setExpandedRows(prev => ({ ...prev, [id]: !prev[id] }));
-    };
-
-    const handleEdit = (id, field, value) => {
-        setRecords(records.map(row => row.id === id ? { ...row, [field]: value } : row));
     };
 
     const handleFilter = (event) => {
@@ -46,72 +62,69 @@ function Categories() {
         { 
             name: 'Image', 
             selector: row => row.image, 
+            width: '100px',
             cell: row => (
-                <img 
-                    src={row.image} 
-                    alt={row.category} 
-                    style={{ width: '50px', height: '50px', borderRadius: '5px' }} 
-                />
+                <div style={{ display: "flex", justifyContent: "center", width: "100%" }}>
+                    <img 
+                        src={row.image} 
+                        alt={row.category} 
+                        style={{ width: '40px', height: '40px', borderRadius: '5px' }} 
+                    />
+                </div>
+            ) 
+        },
+        { 
+            name: 'Category', 
+            selector: row => row.category, 
+            width: '150px', 
+            sortable: true,
+            cell: row => <div style={{ width: "100%", textAlign: "center" }}>{row.category}</div>
+        },
+        { 
+            name: 'Total Pets', 
+            selector: row => row.total, 
+            width: '150px',  
+            sortable: true,
+            cell: row => <div style={{ width: "100%", textAlign: "center" }}>{row.total}</div>
+        },
+        { 
+            name: 'Description', 
+            cell: row => (
+                <div style={{ textAlign: "left", width: "100%" }}>
+                    {row.description.length > 100 ? row.description.slice(0, 100) + '...' : row.description}
+                    {row.description.length > 100 && (
+                        <button 
+                            className="btn btn-link p-0" 
+                            onClick={() => toggleExpand(row.id)}
+                            style={{ 
+                                color: '#7C444F', 
+                                textDecoration: 'none', 
+                                marginLeft: '5px', 
+                                border: 'none', 
+                                background: 'none', 
+                                padding: '0', 
+                                cursor: 'pointer' 
+                            }}
+                        >
+                            {expandedRows[row.id] ? 'Read Less' : 'Read More'}
+                        </button>
+                    )}
+                </div>
             ) 
         },
         {
-            name: 'Category',
-            selector: row => row.category,
-            sortable: true,
-            cell: row => (
-                editMode === row.id ?
-                    <input
-                        type="text"
-                        value={row.category}
-                        onChange={(e) => handleEdit(row.id, 'category', e.target.value)}
-                        onBlur={() => setEditMode(null)}
-                        autoFocus
-                    />
-                    :
-                    <span onDoubleClick={() => setEditMode(row.id)}>{row.category}</span>
-            )
-        },
-        { name: 'Total Pets', selector: row => row.total, sortable: true },
-        {
-            name: 'Description',
-            cell: row => (
-                <div>
-                    {expandedRows[row.id] ? row.description : `${row.description.slice(0, 100)}...`}
-                    <button
-                        className="btn btn-link p-0"
-                        onClick={() => toggleExpand(row.id)}
-                        style={{
-                            color: '#7C444F',
-                            textDecoration: 'none',
-                            marginLeft: '5px',
-                            border: 'none', 
-                            background: 'none', 
-                            padding: '0', 
-                            cursor: 'pointer' 
-                        }}
-                    >
-                        {expandedRows[row.id] ? 'Read Less' : 'Read More'}
-                    </button>
-                </div>
-            )
-        },
-        {
             name: 'Actions',
-            cell: row => (
-                <div style={{ display: 'flex', gap: '10px' }}>
-                    <button className="btn btn-warning btn-sm" onClick={() => setEditMode(row.id)}>
-                        <BsPencilSquare />
-                    </button>
-                    <button className="btn btn-danger btn-sm" onClick={() => alert(`Delete ${row.category}`)}>
-                        <BsTrash />
-                    </button>
-                    <button className="btn btn-info btn-sm" onClick={() => alert(`View ${row.category}`)}>
-                        <BsFillEyeFill />
-                    </button>
+            cell: () => (
+                <div style={{ display: 'flex', justifyContent: 'center', gap: '10px', width: "100%" }}>
+                    <button className="btn btn-warning btn-sm"><BsPencilSquare /></button>
+                    <button className="btn btn-danger btn-sm"><BsTrash /></button>
+                    <button className="btn btn-info btn-sm"><BsFillEyeFill /></button>
                 </div>
             )
         }
     ];
+    
+    
 
     return (
         <main className="main-container">
