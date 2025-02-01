@@ -31,12 +31,12 @@ const Navbar = () => {
   }, []);
 
   return (
-    <nav>
+    <nav className="fixed top-0 left-0 w-full z-40 bg-white shadow-md">
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5, delay: 0.5 }}
-        className="container flex justify-between items-center py-4 md:py-4"
+        className="container flex justify-between items-center py-4 md:py-4  "
       >
         {/* Logo and Title */}
         <div className="text-4xl ml-5 flex items-center font-bold uppercase">
