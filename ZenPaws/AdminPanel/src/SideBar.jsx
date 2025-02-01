@@ -23,8 +23,8 @@ function SideBar() {
           </a>
         </li>
         <li className="sidebar-list-item">
-          <a href="#">
-            <BsFillArchiveFill className="icon" /> Products
+          <a href="Item">
+            <BsFillArchiveFill className="icon" /> Items
           </a>
         </li>
         <li className="sidebar-list-item">

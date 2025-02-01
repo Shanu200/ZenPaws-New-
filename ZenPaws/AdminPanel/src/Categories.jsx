@@ -143,13 +143,13 @@ function Categories() {
                 </div>
 
                 <div className="card">
-                    <Link to="/Products">
-                        <div className="card-inner">
-                            <h3>PRODUCTS</h3>
-                            <BsFillArchiveFill className="card-icon" />
-                        </div>
-                        <h2>30</h2>
-                    </Link>
+                <Link to="/Item">
+                    <div className="card-inner">
+                    <h3>ITEMS</h3>
+                    <BsFillArchiveFill className="card-icon" />
+                    </div>
+                    <h2>30</h2>
+                </Link>
                 </div>
 
                 <div className="card">
