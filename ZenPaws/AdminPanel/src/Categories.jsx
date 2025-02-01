@@ -34,28 +34,31 @@ function Categories() {
                 textAlign: "center", 
                 justifyContent: "center"
             }
-        }
-    };
-    
+        }    
+    }
     const [expandedRows, setExpandedRows] = useState({});
+
+    // eslint-disable-next-line no-unused-vars
     const [records, setRecords] = useState([
-        { id: 1, category: 'Dogs', total: '30', image:category_dog, description: 'The dog is a domesticated descendant of the gray wolf. Also called the domestic dog, it was selectively bred from an extinct population of wolves during the Late Pleistocene by hunter-gatherers. The dog was the first species to be domesticated by humans, over 14,000 years ago and before the development of agriculture.' },
-        { id: 2, category: 'Cats', total: '40', image:category_cat, description: 'The cat, also referred to as the domestic cat, is a small domesticated carnivorous mammal. It is the only domesticated species of the family Felidae. Advances in archaeology and genetics have shown that the domestication of the cat occurred in the Near East around 7500 BC.' },
-        { id: 3, category: 'Rabbits', total: '12', image:category_rabbit, description: 'Rabbits are small mammals in the family Leporidae, which is in the order Lagomorpha. They are familiar throughout the world as a small herbivore, a prey animal, a domesticated form of livestock, and a pet, having a widespread effect on ecologies and cultures.' },
-        { id: 4, category: 'Hamsters', total: '10', image:category_hamster, description: 'Hamsters are rodents belonging to the subfamily Cricetinae, which contains 19 species classified in seven genera. They have become established as popular small pets. The best-known species of hamster is the golden or Syrian hamster, which is the type most commonly kept as a pet.' },
-        { id: 5, category: 'Fish', total: '45', image:category_fish, description: 'A fish is an aquatic, anamniotic, gill-bearing vertebrate animal with swimming fins and a hard skull, but lacking limbs with digits.' }
+        { id: 1, category: 'Dogs', total: '30', image: category_dog, description: 'The dog is a domesticated descendant of the gray wolf. Also called the domestic dog, it was selectively bred from an extinct population of wolves during the Late Pleistocene by hunter-gatherers. The dog was the first species to be domesticated by humans, over 14,000 years ago and before the development of agriculture.' },
+        { id: 2, category: 'Cats', total: '40', image: category_cat, description: 'The cat, also referred to as the domestic cat, is a small domesticated carnivorous mammal. It is the only domesticated species of the family Felidae. Advances in archaeology and genetics have shown that the domestication of the cat occurred in the Near East around 7500 BC.' },
+        { id: 3, category: 'Rabbits', total: '12', image: category_rabbit, description: 'Rabbits are small mammals in the family Leporidae, which is in the order Lagomorpha. They are familiar throughout the world as a small herbivore, a prey animal, a domesticated form of livestock, and a pet, having a widespread effect on ecologies and cultures.' },
+        { id: 4, category: 'Hamsters', total: '10', image: category_hamster, description: 'Hamsters are rodents belonging to the subfamily Cricetinae, which contains 19 species classified in seven genera. They have become established as popular small pets. The best-known species of hamster is the golden or Syrian hamster, which is the type most commonly kept as a pet.' },
+        { id: 5, category: 'Fish', total: '45', image: category_fish, description: 'A fish is an aquatic, anamniotic, gill-bearing vertebrate animal with swimming fins and a hard skull, but lacking limbs with digits.' }
     ]);
 
-    const toggleExpand = (id) => {
-        setExpandedRows(prev => ({ ...prev, [id]: !prev[id] }));
-    };
+    const [filteredRecords, setFilteredRecords] = useState(records);
 
     const handleFilter = (event) => {
         const searchValue = event.target.value.toLowerCase();
-        setRecords(records.filter(row =>
+        setFilteredRecords(records.filter(row =>
             row.category.toLowerCase().includes(searchValue) ||
             row.description.toLowerCase().includes(searchValue)
         ));
+    };
+
+    const toggleExpand = (id) => {
+        setExpandedRows(prev => ({ ...prev, [id]: !prev[id] }));
     };
 
     const columns = [
@@ -89,26 +92,25 @@ function Categories() {
         },
         { 
             name: 'Description', 
+            width: '400px',
             cell: row => (
                 <div style={{ textAlign: "left", width: "100%" }}>
-                    {row.description.length > 100 ? row.description.slice(0, 100) + '...' : row.description}
-                    {row.description.length > 100 && (
-                        <button 
-                            className="btn btn-link p-0" 
-                            onClick={() => toggleExpand(row.id)}
-                            style={{ 
-                                color: '#7C444F', 
-                                textDecoration: 'none', 
-                                marginLeft: '5px', 
-                                border: 'none', 
-                                background: 'none', 
-                                padding: '0', 
-                                cursor: 'pointer' 
-                            }}
-                        >
-                            {expandedRows[row.id] ? 'Read Less' : 'Read More'}
-                        </button>
-                    )}
+                    {expandedRows[row.id] ? row.description : row.description.slice(0, 100) + '...'}
+                    <button 
+                        className="btn btn-link p-0" 
+                        onClick={() => toggleExpand(row.id)}
+                        style={{ 
+                            color: '#7C444F', 
+                            textDecoration: 'none', 
+                            marginLeft: '5px', 
+                            border: 'none', 
+                            background: 'none', 
+                            padding: '0', 
+                            cursor: 'pointer' 
+                        }}
+                    >
+                        {expandedRows[row.id] ? ' Read Less' : ' Read More'}
+                    </button>
                 </div>
             ) 
         },
@@ -124,8 +126,6 @@ function Categories() {
         }
     ];
     
-    
-
     return (
         <main className="main-container">
             <div className="main-title">
@@ -184,7 +184,7 @@ function Categories() {
                 </div>
                 <DataTable
                     columns={columns}
-                    data={records}
+                    data={filteredRecords}
                     selectableRows
                     fixedHeader
                     pagination
