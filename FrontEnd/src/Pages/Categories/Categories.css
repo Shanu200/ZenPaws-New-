@@ -162,6 +162,25 @@ h3.product-name{
 }
 
 
+
+
+button {
+  background-color: #ff7700;
+  color: white;
+  font-size: 16px;
+  padding: 5px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+button:hover {
+  background-color: #ff7700;
+}
+
+
+
 @media (max-width: 600px) {
   .reviews {
     font-size: 14px; 

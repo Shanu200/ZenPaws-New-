@@ -356,12 +356,7 @@ const products = [
                 </div>
                 <div className="card-bottom">
                   <p className="product-price">{product.price}</p>
-                  <button
-                    onClick={() => addToCart(product)}
-                    className="book-now-button"
-                  >
-                    Select
-                  </button>
+                  <button>Select</button>
                 </div>
               </div>
             ))}
