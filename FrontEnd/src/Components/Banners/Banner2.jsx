@@ -16,27 +16,27 @@ const Banner2 = () => {
   return (
     <div className="relative">
       {/* Button to open/close the feedback slider */}
-      <button
+      <button2
         onClick={toggleFeedbackForm}
         className="fixed bottom-6 right-6 bg-orange-700 text-white p-4 rounded-full shadow-lg hover:bg-orange-900 transition duration-300"
       >
         <FaUserCircle className="text-3xl" />
         {isOpen ? "Close Feedback" : "Give Feedback"}
-      </button>
+      </button2>
 
       {/* Feedback slide panel */}
       <div
-        className={`fixed top-0 right-0 w-80 h-full bg-white p-6 shadow-lg transition-transform duration-300 ${
+        className={`fixed top-0 right-0 w-80 h-full bg-white p-6 shadow-lg transition-transform duration-300 mt-16 ${
           isOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >
         {/* Closer Button */}
-        <button
+        <button2
           onClick={closeFeedbackForm}
           className="absolute top-4 right-4 text-gray-500 hover:text-gray-700 transition"
         >
           <IoClose className="text-2xl" />
-        </button>
+        </button2>
 
         <h2 className="text-2xl font-bold text-center mb-6">Provide Your Feedback</h2>
         

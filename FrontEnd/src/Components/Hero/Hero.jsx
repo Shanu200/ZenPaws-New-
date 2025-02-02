@@ -53,9 +53,9 @@ const Hero = () => {
               className="flex justify-center md:justify-start"
             >
               <Link to="/categories">
-                <button className="ml-50 primary-btn bg-orange-700 text-white px-6 py-3 rounded-2xl hover:bg-orange-800 transition cursor-pointer">
+                <button1 className="ml-50 primary-btn bg-orange-700 text-white px-6 py-3 rounded-2xl hover:bg-orange-800 transition cursor-pointer">
                   Book Now
-                </button>
+                </button1>
               </Link>
             </motion.div>
           </div>
