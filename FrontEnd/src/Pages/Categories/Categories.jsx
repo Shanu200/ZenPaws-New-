@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import "./Categories.css";
 import d1 from "../../assets/Categorie Assest/Dogs/d1.jpg";
 import f1 from "../../assets/Categorie Assest/Fishes/f1.webp";
@@ -28,7 +29,7 @@ import r4 from "../../assets/Categorie Assest/Rabbits/r4.jpg";
 import h3 from "../../assets/Categorie Assest/Hamsters/h3.jpg";
 
 const Categories = () => {
-const products = [
+  const products = [
     {
       id: 1,
       name: "Golden Retriever",
@@ -42,7 +43,7 @@ const products = [
       id: 2,
       name: "Betta Fish",
       price: "Rs.350",
-      category:"Fishes",
+      category: "Fishes",
       img: f1,
       reviews: 5.0,
       reviewCount: 300,
@@ -269,27 +270,28 @@ const products = [
     category: "All",
     price: "All",
   });
-  
+
   const [cart, setCart] = useState([]);
-  
+
   const handleFilterChange = (type, value) => {
     setFilters({ ...filters, [type]: value });
   };
-  
+
   const filteredProducts = products.filter((product) => {
     const matchesCategory =
       filters.category === "All" || product.category === filters.category;
     const matchesPrice =
       filters.price === "All" ||
       (filters.price === "Rs.100 - Rs.200" &&
-        parseInt(product.price.slice(3)) <= 200) || 
+        parseInt(product.price.slice(3)) <= 200) ||
       (filters.price === "Rs.200 - Rs.300" &&
         parseInt(product.price.slice(3)) > 200 &&
         parseInt(product.price.slice(3)) <= 300) ||
       (filters.price === "Rs.300 - Rs.400" &&
         parseInt(product.price.slice(3)) > 300 &&
         parseInt(product.price.slice(3)) <= 400) ||
-      (filters.price === "Over Rs.400" && parseInt(product.price.slice(3)) > 400);
+      (filters.price === "Over Rs.400" &&
+        parseInt(product.price.slice(3)) > 400);
     return matchesCategory && matchesPrice;
   });
   return (
@@ -356,7 +358,8 @@ const products = [
                 </div>
                 <div className="card-bottom">
                   <p className="product-price">{product.price}</p>
-                  <button>Select</button>
+
+                    <Link to="/item">Select</Link>
                 </div>
               </div>
             ))}

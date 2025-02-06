@@ -7,6 +7,7 @@ import SignForm from "./Pages/SignForm/SignForm";
 import Categories from "./Pages/Categories/Categories";
 import { Profile } from "./Pages/Profile/Profile";
 import { Contact } from "./Pages/Contact-Us/Contact";
+import { ItemDetails } from "./Pages/Items/ItemDetails";
 
 function App() {
   return (
@@ -21,6 +22,8 @@ function App() {
           <Route path="/categories" element={<Categories />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/item" element={<ItemDetails/>}/>
+
         </Routes>
       </Router>
     </>
