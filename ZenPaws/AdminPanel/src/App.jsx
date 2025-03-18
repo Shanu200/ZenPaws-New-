@@ -8,6 +8,7 @@ import Customer from './Customer';
 import Categories from './Categories';
 import Items from './Item';
 import Alert from './Alert';
+import Profile from './Profile';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
             <Route path="/Categories" element={<Categories/>}/>
             <Route path="/Item" element={<Items/>}/>
             <Route path="/Alert" element={<Alert/>}/>
+            <Route path="/Profile" element={<Profile/>}/>
           </Routes>
         </main>
       </div>
