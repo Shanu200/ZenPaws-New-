@@ -55,11 +55,13 @@ function Home() {
         </div>
 
         <div className="card">
+          <Link to="/Alert">
           <div className="card-inner">
             <h3>ALERTS</h3>
             <BsFillBellFill className="card-icon" />
           </div>
           <h2>10</h2>
+          </Link>
         </div>
 
       </div>

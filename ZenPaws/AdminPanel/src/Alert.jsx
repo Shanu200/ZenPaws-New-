@@ -26,6 +26,7 @@ function Customer() {
     { name: 'Full Name', selector: row => row.name, sortable: true },
     { name: 'Email', selector: row => row.email, sortable: true },
     { name: 'Contact', selector: row => row.contact },
+    { name: 'Message', selector: row => row.message, sortable: true },
     { name: 'Date', selector: row => row.date, sortable: true },
     {
         name: 'Edit',
@@ -53,17 +54,11 @@ function Customer() {
 
 
     const data = [
-        { id: 1, name: 'Nisadi Wijerathna', email: 'nisadi@gmail.com', contact: '0770366935', date: '04.01.2025' },
-        { id: 2, name: 'Sanduni Vihara', email: 'vihara@gmail.com', contact: '0764805656', date: '04.02.2025' },
-        { id: 3, name: 'Imasha Kalpani', email: 'kalpani@gmail.com', contact: '0775987735', date: '04.05.2025' },
-        { id: 4, name: 'Pasindu Mathsara', email: 'mathsara@gmail.com', contact: '0770379950', date: '04.04.2025' },
-        { id: 5, name: 'Pramila Shanuka', email: 'pramila@gmail.com', contact: '0760889782', date: '04.02.2025' },
-        { id: 6, name: 'Maya Perera', email: 'maya@gmail.com', contact: '0715799964', date: '04.02.2025' },
-        { id: 7, name: 'Radiv Silva', email: 'radiv@gmail.com', contact: '0726681573', date: '04.02.2025' },
-        { id: 8, name: 'Athor Colins', email: 'athor@gmail.com', contact: '0715964573', date: '14.07.2025' },
-        { id: 9, name: 'Mogana Megan', email: 'mogana@gmail.com', contact: '0726648963', date: '14.02.2025'},
-        { id: 10, name: 'Merlin Coller', email: 'merlin@gmail.com', contact: '0724882583', date: '25.02.2025'},
-        { id: 11, name: 'Krish Yadev', email: 'krish@gmail.com', contact: '0722881567', date: '19.05.2025'}
+        { id: 1, name: 'Nisadi Wijerathna', email: 'nisadi@gmail.com', contact: '0770366935', message: 'Great Service!', date: '04.01.2025' },
+        { id: 2, name: 'Sanduni Vihara', email: 'vihara@gmail.com', contact: '0764805656', message: 'Good Work', date: '04.02.2025' },
+        { id: 3, name: 'Imasha Kalpani', email: 'kalpani@gmail.com', contact: '0775987735', message: 'Golden Retriver is the best', date: '04.05.2025' },
+        { id: 4, name: 'Pasindu Mathsara', email: 'mathsara@gmail.com', contact: '0770379950', message: 'Great Work', date: '04.04.2025' },
+        { id: 5, name: 'Pramila Shanuka', email: 'pramila@gmail.com', contact: '0760889782', message: 'Affordable for the price', date: '04.02.2025' }
     ];
 
     const [records, setRecords] = useState(data);
@@ -82,7 +77,7 @@ function Customer() {
     return (
         <main className="main-container">
             <div className="main-title">
-                <h1>CUSTOMERS</h1>
+                <h1>ALERTS</h1>
             </div>
 
             <div className="main-card">
@@ -116,9 +111,9 @@ function Customer() {
                 </div>
 
                 <div className="card">
-                    <Link to="/Alert">
+                    <Link to="Customers">
                     <div className="card-inner">
-                        <h3>ALERTS</h3>
+                        <h3>CUSTOMERS</h3>
                         <BsFillBellFill className="card-icon" />
                     </div>
                     <h2>10</h2>

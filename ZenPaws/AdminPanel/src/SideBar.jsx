@@ -1,6 +1,6 @@
 import 'react';
 import {
-  BsGrid1X2Fill, BsFillArchiveFill, BsFillGrid3X3GapFill, BsPeopleFill, BsListCheck, BsListColumns, BsMenuButtonWideFill, BsFillGearFill
+  BsGrid1X2Fill, BsFillArchiveFill, BsFillGrid3X3GapFill, BsPeopleFill, BsListCheck, BsListColumns, BsFillGearFill
 } from 'react-icons/bs';
 
 import logo1 from './assets/logo1.jpg'; // Correct the path based on the actual folder structure
@@ -43,13 +43,8 @@ function SideBar() {
           </a>
         </li>
         <li className="sidebar-list-item">
-          <a href="#">
-            <BsListCheck className="icon" /> Inventories
-          </a>
-        </li>
-        <li className="sidebar-list-item">
-          <a href="#">
-            <BsMenuButtonWideFill className="icon" /> Reports
+          <a href="Alert">
+            <BsListCheck className="icon" /> Alert
           </a>
         </li>
         <li className="sidebar-list-item">
