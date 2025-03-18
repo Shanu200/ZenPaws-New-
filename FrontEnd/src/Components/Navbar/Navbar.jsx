@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { SiPetsathome } from "react-icons/si";
 import { MdMenu, MdOutlineShoppingCart } from "react-icons/md";
 import { FaSearch, FaUserCircle } from "react-icons/fa";
@@ -10,6 +11,7 @@ const NavbarMenu = [
   { id: 3, title: "Categories", link: "/categories" },
   { id: 4, title: "Contact", link: "/contact" },
   { id: 5, title: "Login", link: "login" },
+  { id: 6, title: "Cart", link: "/cart" },
 ];
 
 const Navbar = () => {
@@ -51,17 +53,21 @@ const Navbar = () => {
           <ul className="flex items-center gap-5 text-gray-600">
             {NavbarMenu.map((menu) => (
               <li key={menu.id} className="text-xl">
-                <a
-                  href={menu.link}
+                <Link
+                  to={menu.link}
                   className="inline-block py-1 px-3 hover:shadow-[0_3px_0-1px_#ef4444] font-semibold"
                 >
                   {menu.title}
-                </a>
+                </Link>
               </li>
             ))}
-            <button2 className="text-2xl hover:bg-orange-600 hover:text-white rounded-full p-2 duration-200">
+
+            <Link
+              to="/cart"
+              className="text-2xl hover:bg-orange-600 hover:text-white rounded-full p-2 duration-200"
+            >
               <MdOutlineShoppingCart />
-            </button2>
+            </Link>
           </ul>
         </div>
 
@@ -128,12 +134,12 @@ const Navbar = () => {
           <ul className="flex flex-col gap-4">
             {NavbarMenu.map((menu) => (
               <li key={menu.id}>
-                <a
-                  href={menu.link}
+                <Link
+                  to={menu.link}
                   className="text-lg font-semibold hover:bg-gray-600 px-4 py-2 block"
                 >
                   {menu.title}
-                </a>
+                </Link>
               </li>
             ))}
             <div className="flex justify-between items-center mt-4">
