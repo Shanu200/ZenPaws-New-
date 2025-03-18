@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import pet1 from "../../assets/Home Assest/pets/dogs.avif";
 import pet2 from "../../assets/Home Assest/pets/cats.jpg";
 import pet3 from "../../assets/Home Assest/pets/rabits.webp";
@@ -11,7 +12,7 @@ const MenusData = [
   {
     id: 1,
     title: "Dogs",
-    link: "/",
+    link: "/Categories",
     description: "Relax and play with our friendly dogs.",
     img: pet1,
     delay:0.3,
@@ -20,7 +21,7 @@ const MenusData = [
   {
     id: 2,
     title: "Cats",
-    link: "/",
+    link: "/Categories",
     description: "Enjoy the company of our affectionate cats.",
     img: pet2,
     delay:0.6,
@@ -29,7 +30,7 @@ const MenusData = [
   {
     id: 3,
     title: "Rabbits",
-    link: "/",
+    link: "/Categories",
     description: "Experience peace with our gentle rabbits.",
     img: pet3,
     delay:0.9,
@@ -38,7 +39,7 @@ const MenusData = [
   {
     id: 4,
     title: "Fish",
-    link: "/",
+    link: "/Categories",
     description: "Feel calm as you watch our beautiful fish.",
     img: pet4,
     delay:1.2,
@@ -47,7 +48,7 @@ const MenusData = [
   {
     id: 5,
     title: "Hamsters",
-    link: "/",
+    link: "/Categories",
     description: "Play with our cute and energetic hamsters.",
     img: pet5,
     delay:1.5,
@@ -83,17 +84,17 @@ const Menus = () => {
               />
               <h2 className="text-lg font-semibold text-gray-800 text-center mb-2">
                 {menu.title}
-              </h2>
+                </h2>
               <p className="text-sm text-gray-600 text-center font-bold">
                 {menu.description || "Learn more about our relaxing services."}
               </p>
               <div className="text-center mt-4">
-                <a
-                  href={menu.link}
+                <Link
+                  to={menu.link} // Use Link instead of <a>
                   className="text-sm font-medium text-blue-500 hover:underline"
                 >
                   Learn More
-                </a>
+                </Link>
               </div>
             </motion.div>
           ))}
