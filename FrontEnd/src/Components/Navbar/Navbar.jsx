@@ -11,7 +11,7 @@ const NavbarMenu = [
   { id: 3, title: "Categories", link: "/categories" },
   { id: 4, title: "Contact", link: "/contact" },
   { id: 5, title: "Login", link: "login" },
-  { id: 6, title: "Cart", link: "/cart" },
+ 
 ];
 
 const Navbar = () => {
