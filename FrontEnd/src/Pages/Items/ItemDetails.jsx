@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import d6 from "../../assets/Categorie Assest/Dogs/d6.jpeg";
 import p1 from "../../assets/logo.png";
 import "./ItemDetails.css";
+import { Link } from "react-router-dom";
 
 export const ItemDetails = () => {
 
@@ -93,9 +94,11 @@ export const ItemDetails = () => {
             <button className="booking-now bg-violet-500 text-white font-semibold py-4 px-5 rounded-xl h-full transition-all duration-300 hover:bg-orange-600 hover:shadow-lg">
               Book now
             </button>
+            <Link to ="/Cart">
             <button className="add-to-cart text-white font-semibold py-4 px-5 rounded-xl h-full transition-all duration-300 hover:bg-orange-600 hover:shadow-lg">
               Add to Cart
             </button>
+            </Link>
           </div>
 
           <img src={p1} alt="" style={{ width: "250px", height: "auto" }} />
