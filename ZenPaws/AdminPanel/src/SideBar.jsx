@@ -43,8 +43,8 @@ function SideBar() {
           </a>
         </li>
         <li className="sidebar-list-item">
-          <a href="#">
-            <BsListCheck className="icon" /> Inventories
+          <a href="Alert">
+            <BsListCheck className="icon" /> Alert
           </a>
         </li>
         <li className="sidebar-list-item">

@@ -7,6 +7,7 @@ import Home from './Home';
 import Customer from './Customer';
 import Categories from './Categories';
 import Items from './Item';
+import Alert from './Alert';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
             <Route path="/Customer" element={<Customer />} />
             <Route path="/Categories" element={<Categories/>}/>
             <Route path="/Item" element={<Items/>}/>
+            <Route path="/Alert" element={<Alert/>}/>
           </Routes>
         </main>
       </div>
