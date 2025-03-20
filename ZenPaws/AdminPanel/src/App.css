@@ -408,3 +408,84 @@ html, body {
     }
 }
   
+
+
+
+
+.form-container {
+    max-width: 550px;
+    margin: 30px auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    margin-top: 80px;
+    
+  }
+  
+  .form-title {
+    text-align: center;
+    margin-bottom: 20px;
+    font-weight: 600;
+    font-size: 20px;
+    color: #0a0a0a;
+  }
+  
+  .pet-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  .input-field {
+    padding: 10px;
+    border: 1px solid #bebcbc;
+    border-radius: 6px;
+    font-size: 14px;
+  }
+  
+  .input-field1{
+    padding: 20px;
+    border-radius: 6px;
+    border: 1px solid #bebcbc;
+    font-size: 14px;
+  }
+  .upload-section {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    color: #0a0a0a;
+
+  }
+  
+  .image-preview {
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+  }
+  
+  .image-preview img {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid #1c1a1a;
+  }
+  
+  .submit-button {
+    background-color: black;
+    color: white;
+    padding: 10px;
+    border-radius: 6px;
+    font-size: 16px;
+    margin-top: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  .submit-button:hover {
+    background-color: #333;
+  }
+
+  
+  
