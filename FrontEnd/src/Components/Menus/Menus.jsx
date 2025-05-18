@@ -6,7 +6,7 @@ import pet3 from "../../assets/Home Assest/pets/rabits.webp";
 import pet4 from "../../assets/Home Assest/pets/fish.jpg";
 import pet5 from "../../assets/Home Assest/pets/hamsters.jpg";
 import {motion} from "framer-motion";
-import { FadeLeft } from "../../utility/HomeUtility/animation";
+import { FadeLeft, FadeRight } from "../../utility/HomeUtility/animation";
 
 const MenusData = [
   {
@@ -70,7 +70,7 @@ const Menus = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
           {MenusData.map((menu) => (
             <motion.div
-              variants={FadeLeft(menu.delay)}
+              variants={FadeRight(menu.delay)}
               initial= "hidden"
               whileInView={"visible"}
               whileHover={{scale:1.1}}
