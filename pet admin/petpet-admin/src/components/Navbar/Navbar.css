@@ -34,7 +34,7 @@
   font-weight: bold;
   font-size: 18px;
   transition: color 0.3s ease, transform 0.3s ease; /* Smooth transition for hover effects */
-  position: relative; left: 550px;
+  position: relative; left: 500px;
 }
 
 .navbar a:hover {
