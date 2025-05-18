@@ -1,0 +1,113 @@
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.6); /* Slightly darker overlay for better focus */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999; /* Ensures modal appears above other content */
+  transition: opacity 0.3s ease;
+}
+
+.modal {
+  background-color: white;
+  padding: 30px;
+  border-radius: 12px;
+  width: 550px;
+  max-width: 90%;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.modal h3 {
+  color: #333;
+  font-size: 22px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.modal input {
+  display: block;
+  margin: 15px 0;
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-sizing: border-box;
+  transition: border-color 0.3s ease;
+}
+
+.modal input:focus {
+  border-color: #1976d2;
+  outline: none;
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.modal button {
+  padding: 12px 18px;
+  background-color: #d4841c;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.modal button:hover {
+  background-color: #b87509;
+  transform: translateY(-2px);
+}
+
+.modal button:focus {
+  outline: none;
+}
+
+.modal button.cancel-btn {
+  background-color: #f44336;
+}
+
+.modal button.cancel-btn:hover {
+  background-color: #d32f2f;
+}
+
+@media (max-width: 768px) {
+  .modal {
+    width: 90%;
+    padding: 15px;
+  }
+
+  .modal input {
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  .modal h3 {
+    font-size: 18px;
+  }
+
+  .modal button {
+    font-size: 14px;
+    padding: 10px 14px;
+  }
+}

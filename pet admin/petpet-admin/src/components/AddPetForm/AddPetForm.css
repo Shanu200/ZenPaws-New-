@@ -1,0 +1,73 @@
+/* Add Form Styling */
+.add-form {
+  padding: 30px;
+  max-width: 600px; /* Increased width for a spacious form */
+  margin: 50px auto; /* Centered with space above and below */
+  border: 1px solid #ddd;
+  border-radius: 12px; /* Rounded corners */
+  background-color: #ffffff;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+}
+
+.add-form h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 24px;
+  color: #333; /* Darker text for better contrast */
+}
+
+.add-form label {
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+}
+
+.add-form input,
+.add-form select,
+.add-form textarea {
+  display: block;
+  margin: 12px 0;
+  padding: 12px;
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  box-sizing: border-box; /* Prevents padding from affecting width */
+}
+
+.add-form input:focus,
+.add-form select:focus,
+.add-form textarea:focus {
+  outline: none;
+  border-color: #d27f19; /* Highlight with blue border on focus */
+  box-shadow: 0 0 5px rgba(25, 118, 210, 0.3); /* Subtle glow effect */
+}
+
+.add-form button {
+  padding: 12px 20px;
+  background-color: #d27219;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 18px;
+  cursor: pointer;
+  width: 100%; /* Make the button full-width */
+  transition: background-color 0.3s ease; /* Smooth transition for hover */
+}
+
+.add-form button:hover {
+  background-color: #c06215; /* Darker blue on hover */
+}
+
+.add-form button:disabled {
+  background-color: #b0bec5; /* Disabled button with gray color */
+  cursor: not-allowed;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .add-form {
+    padding: 20px; /* Adjust padding for smaller screens */
+    max-width: 100%; /* Full width on small screens */
+  }
+}
