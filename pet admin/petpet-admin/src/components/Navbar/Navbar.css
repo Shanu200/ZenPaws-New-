@@ -4,11 +4,29 @@
   justify-content:center; /* Centers items in the navbar */
   align-items: center; /* Vertically aligns items */
   gap: 30px; /* Increased gap for spacing */
-  padding: 15px 20px;
+  padding: 15px 15px;
   background-color: #d26c19;
   border-radius: 8px; /* Rounded corners */
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Soft shadow */
+  
 }
+
+
+.navbar-logo {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+   position: relative; right: 550px;
+}
+
+.navbar-title {
+  font-size: 22px;
+  color: white;
+  font-weight: bold;
+  position: relative; right: 550px;
+}
+
 
 .navbar a {
   color: white;
@@ -16,6 +34,7 @@
   font-weight: bold;
   font-size: 18px;
   transition: color 0.3s ease, transform 0.3s ease; /* Smooth transition for hover effects */
+  position: relative; left: 550px;
 }
 
 .navbar a:hover {
