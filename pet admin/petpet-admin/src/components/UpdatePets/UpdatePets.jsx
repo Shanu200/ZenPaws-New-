@@ -32,7 +32,7 @@ const UpdatePets = () => {
 
   return (
     <div className="update-container">
-      <h2>🐾 Manage Your Pets</h2>
+      <h2>Manage Your Pets</h2>
       <div className="cards-wrapper">
         {pets.map((pet) => (
           <div key={pet.id} className="pet-card">
