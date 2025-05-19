@@ -7,17 +7,16 @@ import { Link } from "react-router-dom";
 const Hero = () => {
   return (
     <section>
-      <div className="container grid grid-cols-1 md:grid-cols-2 min-h-[600px]">
-        <div className="flex flex-col justify-center py-12 md:py-1 relative z-10">
-          <div className="text-center md:text-left space-y-8 lg:max-w-[450px]">
+      <div className="container grid grid-cols-1 md:grid-cols-2 min-h-[500px]">
+        <div className="flex flex-col justify-center py-10 md:py-1 relative z-10">
+          <div className="text-center md:text-left space-y-5 lg:max-w-[450px]">
             <motion.h1
               variants={FadeRight(0.6)}
               initial="hidden"
               animate="visible"
-              className="ml-24 text-4xl lg:text-5xl font-semi bold xl:leading-loose font-poppins text-gray-900 md:text-left mt-8"
+              className="ml-24 text-4xl lg:text-5xl font-semi bold xl:leading-loose font-poppins text-gray-900 md:text-left "
             >
               Relax and Heal
-              <br />
               with
               <br />
               <span className="text-orange-600 ">
