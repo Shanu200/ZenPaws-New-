@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 export const ItemDetails = ({ onClose }) => {
   const [quantity, setQuantity] = useState(1);
   const price = 500;
-  const originalPrice = 900;
+  const originalPrice = 500;
 
   const incrementQuantity = () => {
     setQuantity(quantity + 1);
@@ -53,22 +53,29 @@ export const ItemDetails = ({ onClose }) => {
 
             <div className="price-container">
               <span className="original-price">Rs {originalPrice}.00</span>
-              <span className="discounted-price">Rs {price}.00</span>
-              <span className="savings">(You save: Rs {originalPrice - price}.00)</span>
+              
             </div>
 
-            <div className="quantity-container">
-              <label><strong>Quantity:</strong></label>
-              <button
-                className="py-2 px-5 rounded-lg text-violet-400 text-3xl transition-all duration-300 hover:bg-orange-500 hover:text-white"
-                onClick={decrementQuantity}
-              >-</button>
-              <span>{quantity}</span>
-              <button
-                className="py-2 px-5 rounded-lg text-violet-400 text-3xl transition-all duration-300 hover:bg-orange-500 hover:text-white"
-                onClick={incrementQuantity}
-              >+</button>
-            </div>
+            <div className="quantity-container flex items-center gap-2">
+  <label className="mr-1"><strong>Quantity:</strong></label>
+  
+  <button
+    className="py-1 px-3 rounded-md text-violet-400 text-xl transition-all duration-300 hover:bg-orange-500 hover:text-white"
+    onClick={decrementQuantity}
+  >
+    -
+  </button>
+
+  <span className="mx-1 text-lg">{quantity}</span>
+
+  <button
+    className="py-1 px-3 rounded-md text-violet-400 text-xl transition-all duration-300 hover:bg-orange-500 hover:text-white"
+    onClick={incrementQuantity}
+  >
+    +
+  </button>
+</div>
+
 
             <p><strong>Subtotal:</strong> Rs {price * quantity}.00</p>
 
