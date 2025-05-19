@@ -4,7 +4,7 @@
   justify-content:center; /* Centers items in the navbar */
   align-items: center; /* Vertically aligns items */
   gap: 30px; /* Increased gap for spacing */
-  padding: 15px 15px;
+  padding: 05px 15px;
   background-color: #d26c19;
   border-radius: 8px; /* Rounded corners */
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Soft shadow */
@@ -13,18 +13,18 @@
 
 
 .navbar-logo {
-  height: 50px;
-  width: 50px;
+  height: 80px;
+  width: 70px;
   border-radius: 50%;
   object-fit: cover;
-   position: relative; right: 550px;
+   position: relative; right: 500px;
 }
 
 .navbar-title {
   font-size: 22px;
   color: white;
   font-weight: bold;
-  position: relative; right: 550px;
+  position: relative; right: 530px;
 }
 
 

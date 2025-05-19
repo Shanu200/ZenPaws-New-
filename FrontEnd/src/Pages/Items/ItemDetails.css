@@ -1,109 +1,115 @@
-.itempage-wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh; 
-  padding: 20px; 
-  background-color: #f5f5f5; 
-
-}
-
-.itemproduct-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh; 
-  padding: 20px; 
-  background-color: #f5f5f5; 
-  
-}
-
-.product-image-container {
-  flex: 1;
-}
-
-.product-image {
+/* Popup Overlay */
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
-  
+  height: 100%;
+  background: rgba(15, 15, 15, 0.65); /* Darker semi-transparent backdrop */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  backdrop-filter: blur(6px);
 }
 
-.product-details {
-  text-align: left;
+/* Popup Card */
+.popup-card {
+  background: #ffffff;
+  width: 90%;
+  max-width: 960px;
+  padding: 28px 32px;
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+  display: flex; /* Enable flex layout for direct children */
+  flex-direction: row; /* Arrange children in a row */
+  align-items: flex-start; /* Align items to the top */
+  gap: 16px; /* Space between image container and details */
+  position: relative;
+  animation: fadeSlideIn 0.35s ease-out;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  flex-wrap: wrap; /* Allow wrapping for smaller screens */
+}
+
+@keyframes fadeSlideIn {
+  from {
+    transform: translateY(-40px) scale(0.98);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
+/* Close Button */
+.popup-close {
+  position:absolute;
+  top: 14px;
+  left: 20px;
+  font-size: 22px;
+  cursor: pointer;
+  color: #888;
+  transition: color 0.2s ease;
+}
+.popup-close:hover {
+  color: #ff5a5f;
+}
+
+/* Inside the popup */
+.popup-card .product-image-container {
+  flex: 0 0 320px; /* Fixed width for the image container */
+  max-width: 320px;
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+}
+.popup-card .product-image-container img {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+/* Product Details */
+.popup-card .product-details {
+  flex: 1; /* Takes up the remaining available space */
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  gap: 10px; 
-  position: relative; left: 40px;
+  margin-left: 70px;
+  justify-content: space-between;
+  color: #333;
+  min-width: 0; /* Allows the text to shrink if needed */
 }
-
-
-h1 {
-  font-size: 24px;
+.popup-card .product-details h2 {
+  margin: 0 0 8px;
+  font-size: 1.8rem;
+  color: #222;
+}
+.popup-card .product-details p {
+  font-size: 1rem;
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+.popup-card .product-details .price {
+  font-size: 1.4rem;
   font-weight: bold;
+  color: #2a9d8f;
+  margin-bottom: 8px;
 }
-
-.rating {
-  margin: 10px 0;
+.popup-card .product-details .actions {
+  margin-top: 16px;
 }
-
-.price-container {
-  margin: 10px 0;
-}
-
-.original-price {
-  text-decoration: line-through;
-  margin-right: 10px;
-}
-
-.discounted-price {
-  font-size: 20px;
-  font-weight: bold;
-  color: red;
-  margin-right: 10px;
-}
-
-.savings {
-  color: green;
-}
-
-.in-stock-text {
-  color: green;
-}
-
-
-.quantity-container {
-  display: flex;
-  align-items: center;
-  margin: 10px 0;
-}
-
-.quantity-container button {
-  margin: 0 5px;
-  padding: 5px 10px;
-}
-
-.add-to-cart {
-  padding: 10px 20px;
-  background-color: red;
+.popup-card .product-details .actions button {
+  background-color: #2a9d8f;
   color: white;
+  padding: 10px 18px;
+  font-size: 1rem;
   border: none;
+  border-radius: 8px;
   cursor: pointer;
+  transition: background-color 0.3s ease;
 }
-
-.booking-now  {
-  padding: 10px 20px;
-  background-color: red;
-  color: white;
-  border: none;
-  cursor: pointer;
-}
-
-.button-group {
-  display: flex;
-  gap: 16px; 
-}
-
-
-.payment-icons {
-  margin-top: 20px;
+.popup-card .product-details .actions button:hover {
+  background-color: #21867a;
 }

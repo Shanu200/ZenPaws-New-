@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./Categories.css";
+import { ItemDetails } from "../Items/ItemDetails";
 import d1 from "../../assets/Categorie Assest/Dogs/d1.jpg";
 import f1 from "../../assets/Categorie Assest/Fishes/f1.webp";
 import d2 from "../../assets/Categorie Assest/Dogs/d2.jpg";
@@ -271,7 +272,8 @@ const Categories = () => {
     price: "All",
   });
 
-  const [cart, setCart] = useState([]);
+const [selectedProduct, setSelectedProduct] = useState(null);
+
 
   const handleFilterChange = (type, value) => {
     setFilters({ ...filters, [type]: value });
@@ -294,6 +296,7 @@ const Categories = () => {
         parseInt(product.price.slice(3)) > 400);
     return matchesCategory && matchesPrice;
   });
+
   return (
     <div className="app">
       <div className="content">
@@ -344,7 +347,10 @@ const Categories = () => {
         <main className="main-content">
           <div className="products-grid">
             {filteredProducts.map((product) => (
-              <div key={product.id} className="product-card animated-card">
+              <div key={product.id} className="product-card animated-card"
+              
+               style={{ cursor: "pointer" }}
+              >
                 <img
                   src={product.img}
                   alt={product.name}
@@ -358,12 +364,24 @@ const Categories = () => {
                 </div>
                 <div className="card-bottom">
                   <p className="product-price">{product.price}</p>
-
-                    <Link to="/item">Select</Link>
+                 <button
+                  onClick={(e) => {
+                    e.stopPropagation(); // Prevent bubbling (if needed)
+                    setSelectedProduct(product); // Open popup only when clicking button
+                  }}
+                >
+                  Select
+                </button>
                 </div>
               </div>
             ))}
           </div>
+          {selectedProduct && (
+            <ItemDetails
+              product={selectedProduct}
+              onClose={() => setSelectedProduct(null)}
+            />
+          )}
         </main>
       </div>
     </div>
