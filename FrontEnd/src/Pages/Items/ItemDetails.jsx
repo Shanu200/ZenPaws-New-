@@ -57,7 +57,7 @@ export const ItemDetails = ({ onClose }) => {
             </div>
 
             <div className="quantity-container flex items-center gap-2">
-  <label className="mr-1"><strong>Quantity:</strong></label>
+             <label className="mr-1 text-4xl font-bold"><strong>Quantity:</strong></label>
   
   <button
     className="py-1 px-3 rounded-md text-violet-400 text-xl transition-all duration-300 hover:bg-orange-500 hover:text-white"
