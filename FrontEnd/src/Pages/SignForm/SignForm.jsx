@@ -12,7 +12,7 @@ const SignForm = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("http://localhost:8080/api/users/login", loginData);
+      const res = await axios.post("http://localhost:8081/api/users/login", loginData);
       if (res.status === 200) {
         alert("Login successful");
         navigate("/home"); // <-- redirect to home page
@@ -25,7 +25,7 @@ const SignForm = () => {
   const handleSignup = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("http://localhost:8080/api/users/signup", signupData);
+      const res = await axios.post("http://localhost:8081/api/users/signup", signupData);
       if (res.status === 200) {
         alert("Signup successful");
         toggle(true);
