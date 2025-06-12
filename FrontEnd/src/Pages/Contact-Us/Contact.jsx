@@ -1,16 +1,55 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Contact.css";
 import { FaFacebookSquare, FaTwitter, FaLinkedin } from "react-icons/fa";
 
 export const Contact = () => {
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    phone: "",
+    message: "",
+  });
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await fetch("http://localhost:8081/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        alert("Message sent successfully!");
+        setFormData({
+          firstName: "",
+          lastName: "",
+          email: "",
+          phone: "",
+          message: "",
+        });
+      } else {
+        alert("Failed to send message.");
+      }
+    } catch (error) {
+      alert("Error: " + error.message);
+    }
+  };
+
   return (
     <div className="contact-container">
       {/* Left Section */}
       <div className="contact-info">
         <h2>Contact Information</h2>
-        <p>
-          Fill up the form and our Team will get back to you within 24 hours.
-        </p>
+        <p>Fill up the form and our Team will get back to you within 24 hours.</p>
         <div className="contact-details">
           <p>
             <span>📞</span> Phone: +99 2355 598
@@ -38,18 +77,49 @@ export const Contact = () => {
       {/* Right Section */}
       <div className="contact-form">
         <h2>Send us a message</h2>
-        <form>
+        <form onSubmit={handleSubmit}>
           <div className="form-group">
-            <input type="text" placeholder="First Name" required />
-            <input type="text" placeholder="Last Name" required />
+            <input
+              type="text"
+              name="firstName"
+              placeholder="First Name"
+              value={formData.firstName}
+              onChange={handleChange}
+              required
+            />
+            <input
+              type="text"
+              name="lastName"
+              placeholder="Last Name"
+              value={formData.lastName}
+              onChange={handleChange}
+              required
+            />
           </div>
           <div className="form-group">
-            <input type="email" placeholder="Email" required />
-            <input type="text" placeholder="Phone" required />
+            <input
+              type="email"
+              name="email"
+              placeholder="Email"
+              value={formData.email}
+              onChange={handleChange}
+              required
+            />
+            <input
+              type="text"
+              name="phone"
+              placeholder="Phone"
+              value={formData.phone}
+              onChange={handleChange}
+              required
+            />
           </div>
           <textarea
+            name="message"
             placeholder="Write your message"
             rows="4"
+            value={formData.message}
+            onChange={handleChange}
             required
           ></textarea>
           <button type="submit">Send Message</button>
