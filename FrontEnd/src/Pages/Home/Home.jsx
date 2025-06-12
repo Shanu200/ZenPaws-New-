@@ -17,8 +17,7 @@ const Home = () => {
       <Banner2 />
       <Banner3 />
       <Footer />
-      <h1>Welcome to ZenPaws Home Page!</h1>
-      <p>You have successfully logged in.</p>
+      
     </div>
   );
 };
