@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 @CrossOrigin(origins = "*") // Allows requests from frontend (e.g., React app)
 @RestController
-@RequestMapping("/api/contact")
+@RequestMapping("/api/")
 public class ContactController {
 
     @Autowired
