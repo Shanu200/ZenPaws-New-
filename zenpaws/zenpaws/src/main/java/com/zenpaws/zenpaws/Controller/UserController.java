@@ -15,7 +15,7 @@ import java.util.Map;
 public class UserController {
 
     @Autowired
-    private User userService;
+    private UserService userService;
 
     @PostMapping("/signup")
     public User signup(@RequestBody User user) {
