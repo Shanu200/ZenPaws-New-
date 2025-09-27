@@ -1,92 +1,112 @@
-import React, { useState } from 'react';
-import d6 from "../../assets/Categorie Assest/Dogs/d6.jpeg";
-import p1 from "../../assets/logo.png";
+import React, { useState } from "react";
+import { useCart } from "../../context/CartContext";
 import "./ItemDetails.css";
-import { Link } from "react-router-dom";
 
-export const ItemDetails = ({ onClose }) => {
+export const ItemDetails = ({ product, onClose }) => {
   const [quantity, setQuantity] = useState(1);
-  const price = 500;
-  const originalPrice = 500;
+  const [message, setMessage] = useState(""); // For success message
+  const { addToCart } = useCart();
 
-  const incrementQuantity = () => {
-    setQuantity(quantity + 1);
-  };
+  if (!product) return null;
 
-  const decrementQuantity = () => {
-    if (quantity > 1) {
-      setQuantity(quantity - 1);
-    }
+  const incrementQuantity = () => setQuantity((prev) => prev + 1);
+  const decrementQuantity = () =>
+    setQuantity((prev) => (prev > 1 ? prev - 1 : 1));
+
+  const handleAddToCart = () => {
+    addToCart(
+      {
+        id: product._id,
+        name: product.name,
+        img: `http://localhost:8081${product.imageUrl}`,
+        price: product.price,
+      },
+      quantity
+    );
+
+    setMessage(`${product.name} added to cart! ✅`);
+
+    // Reset quantity if you want
+    setQuantity(1);
+
+    // Optionally close popup after 1.5s
+    setTimeout(() => {
+      setMessage("");
+      onClose();
+    }, 1500);
   };
 
   return (
     <div className="popup-overlay">
       <div className="popup-card">
-        <button className="close-button" onClick={onClose}>×</button>
+        <button className="close-button" onClick={onClose}>
+          ×
+        </button>
 
         <div className="itemproduct-container flex flex-col justify-between lg:flex-row lg:items-center">
+          {/* Product Image */}
           <div>
             <img
-              src={d6}
-              alt="Golden Retriever"
+              src={`http://localhost:8081${product.imageUrl}`}
+              alt={product.name}
               style={{ width: "300px", height: "auto" }}
             />
           </div>
 
+          {/* Product Details */}
           <div className="product-details">
-            <h1 className="text-3xl font-bold">Golden Retriever</h1>
-
-            <div className="review-summary flex items-center">
-              <div className="stars text-yellow-500">
-                <span>★★★★★</span>
-                <span>☆</span>
-              </div>
-              <div className="rating-text ml-2">
-                <span className="text-lg font-bold">4.7</span>
-                <span className="text-lg"> 126 Reviews</span>
-              </div>
-            </div>
-
-            <p><strong>Availability:</strong> <span className="in-stock-text">in stock</span></p>
-            <p><strong>Category:</strong> Dog</p>
-            <p>Golden Retrievers are friendly, intelligent, and loyal dogs, known for their gentle nature and versatility as family pets and service animals</p>
+            <h1 className="text-3xl font-bold">{product.name}</h1>
+            <p>
+              <strong>Category:</strong> {product.type}
+            </p>
+            <p>
+              <strong>Availability:</strong>{" "}
+              {product.quantity > 0 ? (
+                <span className="in-stock-text">In Stock</span>
+              ) : (
+                <span className="out-of-stock-text">Out of Stock</span>
+              )}
+            </p>
+            <p>{product.description}</p>
 
             <div className="price-container">
-              <span className="original-price">Rs {originalPrice}.00</span>
-              
+              <span className="original-price">Rs {product.price}.00</span>
             </div>
 
-            <div className="quantity-container flex items-center gap-2">
-             <label className="mr-1 text-4xl font-bold"><strong>Quantity:</strong></label>
-  
-  <button
-    className="py-1 px-3 rounded-md text-violet-400 text-xl transition-all duration-300 hover:bg-orange-500 hover:text-white"
-    onClick={decrementQuantity}
-  >
-    -
-  </button>
-
-  <span className="mx-1 text-lg">{quantity}</span>
-
-  <button
-    className="py-1 px-3 rounded-md text-violet-400 text-xl transition-all duration-300 hover:bg-orange-500 hover:text-white"
-    onClick={incrementQuantity}
-  >
-    +
-  </button>
-</div>
-
-
-            <p><strong>Subtotal:</strong> Rs {price * quantity}.00</p>
-
-            <div className="button-group flex gap-4">
-              <button className="booking-now bg-violet-500 text-white font-semibold py-4 px-5 rounded-xl h-full transition-all duration-300 hover:bg-orange-600 hover:shadow-lg">Book now</button>
-              <Link to="/Cart">
-                <button className="add-to-cart text-white font-semibold py-4 px-5 rounded-xl h-full transition-all duration-300 hover:bg-orange-600 hover:shadow-lg">Add to Cart</button>
-              </Link>
+            {/* Quantity Controls */}
+            <div className="quantity-container flex items-center gap-2 mt-2">
+              <label className="mr-2 font-bold">Quantity:</label>
+              <button
+                className="py-1 px-3 rounded-md text-violet-400 text-xl transition-all duration-300 hover:bg-orange-500 hover:text-white"
+                onClick={decrementQuantity}
+              >
+                -
+              </button>
+              <span className="mx-2">{quantity}</span>
+              <button
+                className="py-1 px-3 rounded-md text-violet-400 text-xl transition-all duration-300 hover:bg-orange-500 hover:text-white"
+                onClick={incrementQuantity}
+              >
+                +
+              </button>
             </div>
 
-            <img src={p1} alt="" style={{ width: "250px", height: "auto" }} />
+            <p className="mt-2">
+              <strong>Subtotal:</strong> Rs {product.price * quantity}.00
+            </p>
+
+            {/* Action Buttons */}
+            <div className="button-group flex gap-4 mt-4">
+              <button
+                className="booking-now bg-violet-500 text-white font-semibold py-3 px-5 rounded-xl transition-all duration-300 hover:bg-orange-600 hover:shadow-lg"
+                onClick={handleAddToCart}
+              >
+                Add to Cart
+              </button>
+            </div>
+
+            {/* Success Message */}
+            {message && <p className="success-message">{message}</p>}
           </div>
         </div>
       </div>

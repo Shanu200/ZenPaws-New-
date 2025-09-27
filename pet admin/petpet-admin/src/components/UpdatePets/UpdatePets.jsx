@@ -5,16 +5,45 @@ import "./UpdatePets.css";
 const UpdatePets = () => {
   const [pets, setPets] = useState([]);
   const [editingPet, setEditingPet] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [message, setMessage] = useState("");
+
+  // Fetch pets from backend
+  const fetchPets = async () => {
+    try {
+      setLoading(true);
+      const response = await fetch("http://localhost:8081/api/pets");
+      if (response.ok) {
+        const data = await response.json();
+        setPets(data);
+      } else {
+        setMessage("Failed to fetch pets.");
+      }
+    } catch (error) {
+      setMessage("Error: " + error.message);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   useEffect(() => {
-    const savedPets = JSON.parse(localStorage.getItem("pets")) || [];
-    setPets(savedPets);
+    fetchPets();
   }, []);
 
-  const handleDelete = (id) => {
-    const updatedPets = pets.filter((pet) => pet.id !== id);
-    setPets(updatedPets);
-    localStorage.setItem("pets", JSON.stringify(updatedPets));
+  const handleDelete = async (id) => {
+    try {
+      const response = await fetch(`http://localhost:8081/api/pets/${id}`, {
+        method: "DELETE",
+      });
+      if (response.ok) {
+        setPets((prev) => prev.filter((pet) => pet._id !== id));
+        setMessage("✅ Pet deleted successfully!");
+      } else {
+        setMessage("❌ Failed to delete pet.");
+      }
+    } catch (error) {
+      setMessage("❌ Error: " + error.message);
+    }
   };
 
   const handleEdit = (pet) => {
@@ -22,35 +51,40 @@ const UpdatePets = () => {
   };
 
   const updatePet = (updatedPet) => {
-    const updatedPets = pets.map((pet) =>
-      pet.id === updatedPet.id ? updatedPet : pet
+    setPets((prev) =>
+      prev.map((pet) => (pet._id === updatedPet._id ? updatedPet : pet))
     );
-    setPets(updatedPets);
-    localStorage.setItem("pets", JSON.stringify(updatedPets));
     setEditingPet(null);
   };
 
+  if (loading) return <p>Loading pets...</p>;
+
   return (
     <div className="update-container">
-      <h2>Manage Your Pets</h2>
-      <div className="cards-wrapper">
-        {pets.map((pet) => (
-          <div key={pet.id} className="pet-card">
-            <img src={pet.image} alt={pet.name} />
-            <h3>{pet.name}</h3>
-            <span className="badge type">{pet.type}</span>
-            <p className="description">{pet.description}</p>
-            <div className="info-row">
-              <span className="badge price">Rs. {pet.price}</span>
-              <span className="badge quantity">{pet.quantity} pcs</span>
-            </div>
-            <div className="card-buttons">
-              <button className="edit-btn" onClick={() => handleEdit(pet)}>✏️ Edit</button>
-              <button className="delete-btn" onClick={() => handleDelete(pet.id)}>🗑️ Delete</button>
-            </div>
+      <h2>Manage Pets</h2>
+      {message && <p className="message">{message}</p>}
+
+      {pets.length === 0 ? (
+        <p>No pets available.</p>
+      ) : (
+        pets.map((pet) => (
+          <div key={pet._id} className="pet-card">
+            <p>
+              <strong>{pet.name}</strong> - {pet.type}
+            </p>
+            <p>{pet.description}</p>
+            <p>Price: Rs.{pet.price}</p>
+            <p>Quantity: {pet.quantity}</p>
+            <img
+              src={`http://localhost:8081${pet.imageUrl}`}
+              alt={pet.name}
+              height={80}
+            />
+            <button onClick={() => handleEdit(pet)}>Edit</button>
+            <button onClick={() => handleDelete(pet._id)}>Delete</button>
           </div>
-        ))}
-      </div>
+        ))
+      )}
 
       {editingPet && (
         <EditPetModal

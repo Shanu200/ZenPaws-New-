@@ -1,141 +1,61 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import d1 from "../../assets/Categorie Assest/Dogs/d1.jpg";
-import f1 from "../../assets/Categorie Assest/Fishes/f1.webp";
-import d2 from "../../assets/Categorie Assest/Dogs/d2.jpg";
-import c2 from "../../assets/Categorie Assest/Cats/c2.jpeg";
-import c3 from "../../assets/Categorie Assest/Cats/c3.jpg";
-
-const initialCart = [
-  {
-    id: 1,
-    name: "Golden Retriever",
-    price: 60,
-    quantity: 4,
-    img: d1,  // Correct image reference
-  },
-  {
-    id: 2,
-    name: "Fish Type 1",
-    price: 50,
-    quantity: 3,
-    img: f1,
-  },
-  {
-    id: 3,
-    name: "Labrador",
-    price: 50,
-    quantity: 1,
-    img: d2,
-  },
-  {
-    id: 4,
-    name: "Persian Cat",
-    price: 50,
-    quantity: 3,
-    img: c2,
-  },
-  {
-    id: 5,
-    name: "Siamese Cat",
-    price: 60,
-    quantity: 2,
-    img: c3,
-  },
-  
-];
+import React from "react";
+import { useCart } from "../../context/CartContext";
+import "./Cart.css"; // Optional: Add your custom styling
 
 const Cart = () => {
-  const [cart, setCart] = useState(initialCart);
-  const navigate = useNavigate();
+  const { cart, addToCart, removeFromCart, clearCart } = useCart();
 
-  const handleQuantityChange = (id, amount) => {
-    setCart((prevCart) =>
-      prevCart.map((item) =>
-        item.id === id
-          ? { ...item, quantity: Math.max(1, item.quantity + amount) }
-          : item
-      )
-    );
-  };
+  if (cart.length === 0) {
+    return <h2 className="empty-cart">Your cart is empty 🛒</h2>;
+  }
 
-  const handleRemoveItem = (id) => {
-    setCart(cart.filter((item) => item.id !== id));
-  };
-
-  const totalAmount = cart.reduce(
-    (sum, item) => sum + item.price * item.quantity,
+  const total = cart.reduce(
+    (sum, item) => sum + parseInt(item.price) * item.quantity,
     0
   );
 
+  const incrementQuantity = (item) => {
+    addToCart(item, item.quantity + 1); // Update quantity in context
+  };
+
+  const decrementQuantity = (item) => {
+    if (item.quantity > 1) {
+      addToCart(item, item.quantity - 1); // Update quantity
+    } else {
+      removeFromCart(item.id); // Remove if quantity reaches 0
+    }
+  };
+
   return (
-    <div className="container mx-auto mt-10 p-6 bg-white shadow-md rounded-lg w-3/4">
-      <table className="w-full border-collapse text-left mt-10">
-        <thead>
-          <tr className="bg-gray-100">
-            <th className="p-3">Image</th>
-            <th className="p-3">Pet Name</th>
-            <th className="p-3">Price</th>
-            <th className="p-3">Quantity</th>
-            <th className="p-3">Remove</th>
-            <th className="p-3">Total</th>
-          </tr>
-        </thead>
-        <tbody>
-          {cart.map((item) => (
-            <tr key={item.id} className="border">
-              <td className="p-3 text-center">
-                <img
-                  src={item.img}
-                  alt={item.name}
-                  className="w-16 h-16 object-cover mx-auto rounded-md"
-                />
-              </td>
-              <td className="p-3">{item.name}</td>
-              <td className="p-3">Rs.{item.price}</td>
-              <td className="p-3 text-center">
-                <button1
-                  onClick={() => handleQuantityChange(item.id, -1)}
-                  className="px-3 py-1 bg-gray-300 rounded-l cursor-pointer"
-                >
-                  -
-                </button1>
-                <span className="px-4">{item.quantity}</span>
-                <button1
-                  onClick={() => handleQuantityChange(item.id, 1)}
-                  className="px-3 py-1 bg-gray-300 rounded-r cursor-pointer"
-                >
-                  +
-                </button1>
-              </td>
-              <td className="p-3 text-center">
-                <button
-                  onClick={() => handleRemoveItem(item.id)}
-                  className="bg-orange-700 text-white px-4 py-1 rounded"
-                >
-                  Remove
-                </button>
-              </td>
-              <td className="p-3">Rs. {item.price * item.quantity}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-
-      <div className="text-right text-xl font-bold mt-4">
-        Total: <span className="text-orange-700">Rs. {totalAmount}</span>
-      </div>
-
-      <div className="flex justify-between mt-6">
-        <button
-          onClick={() => navigate("/categories")}
-          className="bg-orange-700 text-white px-6 py-2 rounded"
-        >
-          Back to Categories
+    <div className="cart-container">
+      <h2>Your Cart</h2>
+      {cart.map((item) => (
+        <div key={item.id} className="cart-item flex items-center gap-4">
+          <img src={item.img} alt={item.name} width={80} />
+          <div className="cart-item-details">
+            <h3>{item.name}</h3>
+            <div className="quantity-controls flex gap-2 mt-1">
+              <button onClick={() => decrementQuantity(item)}>-</button>
+              <span>{item.quantity}</span>
+              <button onClick={() => incrementQuantity(item)}>+</button>
+            </div>
+            <p>Price: Rs {item.price}.00</p>
+            <p>Subtotal: Rs {item.price * item.quantity}.00</p>
+            <button
+              className="remove-btn"
+              onClick={() => removeFromCart(item.id)}
+            >
+              Remove
+            </button>
+          </div>
+        </div>
+      ))}
+      <h3 className="cart-total">Total: Rs {total}.00</h3>
+      <div className="cart-actions flex gap-4 mt-4">
+        <button onClick={clearCart} className="clear-cart-btn">
+          Clear Cart
         </button>
-        <button className="bg-orange-700 text-white px-6 py-2 rounded">
-          Proceed to Checkout
-        </button>
+        <button className="checkout-btn">Proceed to Checkout</button>
       </div>
     </div>
   );
